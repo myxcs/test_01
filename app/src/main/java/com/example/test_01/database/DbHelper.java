@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbHelper extends SQLiteOpenHelper {
     //tạo database sql
     private Context context;
-    private static final String DATABASE_NAME = "sinhvien.db";
+    private static final String DATABASE_NAME = "SINHVIEN.DB";
     private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_USER = "user";
+    private static final String TABLE_USER = "USER";
 
     //tạo constructor
     public DbHelper(Context context) {
@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
         //tạo data mẫu
-        String InsertSinhvien = "INSERT INTO SINHVIEN VALUES (1, 'Nguyen Van A', 9)";
+        String InsertSinhvien = "INSERT INTO SINHVIEN VALUES (1, 'Nguyễn Quang Thái', 10), (2, 'Trần Văn A', 8), (3, 'Trần Văn B', 7), (4, 'Trần Văn C', 9), (5, 'Trần Văn D', 8)";
         sqLiteDatabase.execSQL(InsertSinhvien);
 
     }

@@ -35,6 +35,10 @@ public class comment {
 //
 //        String Sinhvien = "CREATE TABLE SINHVIEN (MASV INTEGER PRIMARY KEY AUTOINCREMENT, TENSV TEXT, DIEMSV INTEGER)";
 //        sqLiteDatabase.execSQL(Sinhvien);
+
+    //    //tạo data mẫu
+    //        String InsertSinhvien = "INSERT INTO SINHVIEN VALUES (1, 'Nguyễn Quang Thái', 10), (2, 'Trần Văn A', 8), (3, 'Trần Văn B', 7), (4, 'Trần Văn C', 9), (5, 'Trần Văn D', 8)";
+    //        sqLiteDatabase.execSQL(InsertSinhvien);
 //    }
 
     //xử lý trong onUpgrade
@@ -140,8 +144,63 @@ public class comment {
     //            }
     //        });
 
+//b7 tạo floating button và recycler view trong fragment_danh_sach
+
+//<?xml version="1.0" encoding="utf-8"?>
+//<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+//    xmlns:tools="http://schemas.android.com/tools"
+//    android:layout_width="match_parent"
+//    android:layout_height="match_parent"
+//    android:background="#F44336"
+//    tools:context=".fragment.DanhSachFragment">
+//
+//   <androidx.recyclerview.widget.RecyclerView
+//       android:layout_width="match_parent"
+//       android:layout_height="match_parent"
+//       android:id="@+id/recycler_view"/>
+//
+//    <com.google.android.material.floatingactionbutton.FloatingActionButton
+//        android:layout_width="wrap_content"
+//        android:layout_height="wrap_content"
+//        android:layout_alignParentBottom="true"
+//        android:layout_alignParentEnd="true"
+//        android:layout_margin="30dp"
+//        android:id="@+id/float_add"
+//        android:src="@drawable/ic_add"/>
+//
+//</RelativeLayout>
+
+//ánh xạ recyclerView, floating button trong fragment_danh_sach
+
+    //b8 tạo SinhVienDAO
+
+    //  private DbHelper dbHelper;
+    //    public SinhVienDAO(Context context)
+    //    {
+    //        dbHelper = new DbHelper(context);
+    //
+    //    }
 
 
+    //b9 tạo model sinh viên
+    //tạo contractor  và getter setter cho SinhVienModel
+
+
+    //b10 lấy danh sách sinh viên
+
+
+    //public ArrayList<SinhVienModel> getDs(){
+    //        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+    //        ArrayList<SinhVienModel> list = new ArrayList<>();
+    //        Cursor cursor =  sqLiteDatabase.rawQuery("SELECT * FROM SINHVIEN", null);
+    //        if(cursor.getCount()>0){
+    //           cursor.moveToFirst();
+    //           do {
+    //               list.add(new SinhVienModel(cursor.getInt(0), cursor.getString(1), cursor.getFloat(2)));
+    //           }while (cursor.moveToNext());
+    //        }
+    //        return list;
+    //    }
 
 
 
