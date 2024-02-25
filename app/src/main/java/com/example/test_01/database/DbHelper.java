@@ -6,34 +6,34 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DbHelper extends SQLiteOpenHelper {
     //tạo database sql
-    private Context context;
-    private static final String DATABASE_NAME = "SINHVIEN.DB";
-    private static final int DATABASE_VERSION = 1;
-    private static final String TABLE_USER = "USER";
-
-    //tạo constructor
-    public DbHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.context = context;
+    public DbHelper(Context context){
+        super(context, "SINHVIEN.db", null, 1);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         //tạo table
-        String Sinhvien = "CREATE TABLE SINHVIEN (MASV INTEGER PRIMARY KEY AUTOINCREMENT, TENSV TEXT, DIEMSV INTEGER)";
-        sqLiteDatabase.execSQL(Sinhvien);
-
-
+     String createSinhVien = "CREATE TABLE SINHVIEN (" +
+             "MASV TEXT PRIMARY KEY," +
+             "TENSV TEXT," +
+             "DIEM INTEGER)";
+     sqLiteDatabase.execSQL(createSinhVien);
         //tạo data mẫu
-        String InsertSinhvien = "INSERT INTO SINHVIEN VALUES (1, 'Nguyễn Quang Thái', 10), (2, 'Trần Văn A', 8), (3, 'Trần Văn B', 7), (4, 'Trần Văn C', 9), (5, 'Trần Văn D', 8)";
-        sqLiteDatabase.execSQL(InsertSinhvien);
+        String addSinhVien = "INSERT INTO SINHVIEN VALUES" +
+                " ('PH36461', 'Nguyễn Quang Thái', 10)," +
+                " ('PH36462', 'Trần Văn A', 8), " +
+                "('PH36463', 'Trần Văn B', 7)," +
+                " ('PH36466', 'Trần Văn C', 9)," +
+                " ('PH36434', 'Trần Văn D', 8)";
+        sqLiteDatabase.execSQL(addSinhVien);
 
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-       if (i != i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+       if (oldVersion != newVersion) {
            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS SINHVIEN");
            onCreate(sqLiteDatabase);
        }

@@ -25,7 +25,7 @@ public class SinhVienDAO {
         if(cursor.getCount()>0){
            cursor.moveToFirst();
            do {
-               list.add(new SinhVienModel(cursor.getInt(0), cursor.getString(1), cursor.getFloat(2)));
+               list.add(new SinhVienModel(cursor.getString(0), cursor.getString(1), cursor.getInt(2)));
            }while (cursor.moveToNext());
         }
         return list;

@@ -5,10 +5,15 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.test_01.adapter.SinhVienAdapter;
 import com.example.test_01.fragment.DanhSachFragment;
 import com.example.test_01.fragment.ThongTinFragment;
+import com.example.test_01.model.SinhVienModel;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 public class comment {
     //tạo database
@@ -19,35 +24,43 @@ public class comment {
     //implement onCreate và onUpgrade cho class DbHelper
     //tạo constructor cho class DbHelper va truyền vào context
 
-//    private Context context;
-//    private static final String DATABASE_NAME = "sinhvien.db";
-//    private static final int DATABASE_VERSION = 1;
-//    public DbHelper(Context context) {
-//        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-//        this.context = context;
-//    }
+    //b1 tạo database
+    //    //tạo database sql
+    //    public DbHelper(Context context){
+    //        super(context, "SINHVIEN.db", null, 1);
+    //    }
+
+
+
+
 
     //b2 xử lý
     //xử lý trong onCreate
 
-//    @Override
-//    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//
-//        String Sinhvien = "CREATE TABLE SINHVIEN (MASV INTEGER PRIMARY KEY AUTOINCREMENT, TENSV TEXT, DIEMSV INTEGER)";
-//        sqLiteDatabase.execSQL(Sinhvien);
-
-    //    //tạo data mẫu
-    //        String InsertSinhvien = "INSERT INTO SINHVIEN VALUES (1, 'Nguyễn Quang Thái', 10), (2, 'Trần Văn A', 8), (3, 'Trần Văn B', 7), (4, 'Trần Văn C', 9), (5, 'Trần Văn D', 8)";
-    //        sqLiteDatabase.execSQL(InsertSinhvien);
-//    }
+    // //tạo table
+    //     String createSinhVien = "CREATE TABLE SINHVIEN (" +
+    //             "MASV TEXT PRIMARY KEY," +
+    //             "TENSV TEXT," +
+    //             "DIEM INTEGER)";
+    //     sqLiteDatabase.execSQL(createSinhVien);
+    //        //tạo data mẫu
+    //        String addSinhVien = "INSERT INTO SINHVIEN VALUES" +
+    //                " ('PH36461', 'Nguyễn Quang Thái', 10)," +
+    //                " ('PH36462', 'Trần Văn A', 8), " +
+    //                "('PH36463', 'Trần Văn B', 7)," +
+    //                " ('PH36466', 'Trần Văn C', 9)," +
+    //                " ('PH36434', 'Trần Văn D', 8)";
+    //        sqLiteDatabase.execSQL(addSinhVien);
+    //
+    //    }
 
     //xử lý trong onUpgrade
-//    @Override
-//    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-//        if (i != i1) {
-//            sqLiteDatabase.execSQL("DROP TABLE IF EXISTS SINHVIEN");
-//            onCreate(sqLiteDatabase);
-//        }
+//  @Override
+//    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+//       if (oldVersion != newVersion) {
+//           sqLiteDatabase.execSQL("DROP TABLE IF EXISTS SINHVIEN");
+//           onCreate(sqLiteDatabase);
+//       }
 //    }
 
     //b3 tạo giao diện
@@ -196,12 +209,164 @@ public class comment {
     //        if(cursor.getCount()>0){
     //           cursor.moveToFirst();
     //           do {
-    //               list.add(new SinhVienModel(cursor.getInt(0), cursor.getString(1), cursor.getFloat(2)));
+    //                 list.add(new SinhVienModel(cursor.getString(0), cursor.getString(1), cursor.getFloat(2)));
     //           }while (cursor.moveToNext());
     //        }
     //        return list;
     //    }
 
+
+    //b11 tạo một layout item_sinh_vien sử dụng CardView
+    //mẫu
+
+    //<?xml version="1.0" encoding="utf-8"?>
+    //<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    //    android:layout_width="match_parent"
+    //    android:layout_height="wrap_content"
+    //    xmlns:app="http://schemas.android.com/apk/res-auto"
+    //    app:cardCornerRadius="15sp"
+    //    android:layout_margin="10dp">
+    //
+    //    <LinearLayout
+    //        android:weightSum="2"
+    //        android:layout_width="match_parent"
+    //        android:layout_height="match_parent"
+    //        android:orientation="horizontal">
+    //
+    //        <LinearLayout
+    //            android:layout_weight="1"
+    //            android:layout_width="match_parent"
+    //            android:layout_height="match_parent"
+    //            android:layout_marginLeft="20dp"
+    //            android:orientation="vertical">
+    //            <TextView
+    //                android:layout_width="wrap_content"
+    //                android:layout_height="wrap_content"
+    //                android:id="@+id/tv_masv"
+    //                android:text="Mã sinh viên"
+    //                android:textSize="20dp"
+    //                android:textColor="@color/black"
+    //                />
+    //            <TextView
+    //                android:layout_marginVertical="5dp"
+    //                android:layout_width="wrap_content"
+    //                android:layout_height="wrap_content"
+    //                android:id="@+id/tv_tensv"
+    //                android:text="Tên sinh viên"
+    //                android:textStyle="bold"
+    //                android:textSize="20dp"
+    //                android:textColor="@color/black"
+    //                />
+    //            <TextView
+    //                android:layout_width="wrap_content"
+    //                android:layout_height="wrap_content"
+    //                android:id="@+id/tv_diem"
+    //                android:text="Điểm"
+    //                android:textSize="20dp"
+    //                android:textColor="@color/black"
+    //                />
+    //        </LinearLayout>
+    //
+    //        <LinearLayout
+    //            android:layout_weight="1"
+    //            android:layout_width="match_parent"
+    //            android:layout_height="match_parent"
+    //            android:gravity="end"
+    //            android:orientation="horizontal">
+    //
+    //            <ImageView
+    //                android:id="@+id/bt_delete"
+    //                android:layout_gravity="center_vertical"
+    //                android:layout_width="30dp"
+    //                android:layout_height="30dp"
+    //                android:src="@drawable/ic_delete"/>
+    //            <ImageView
+    //                android:id="@+id/bt_edit"
+    //                android:layout_margin="20dp"
+    //                android:layout_gravity="center_vertical"
+    //                android:layout_width="30dp"
+    //                android:layout_height="30dp"
+    //                android:src="@drawable/ic_edit"/>
+    //        </LinearLayout>
+    //
+    //    </LinearLayout>
+    //</androidx.cardview.widget.CardView>
+
+
+    //b12 tạo adapter cho recyclerView (SinhVienAdapter)
+    //tạo class ViewHolder extends RecyclerView.ViewHolder
+    //thêm constructor match super
+
+    //b13 public class SinhVienAdapter extends RecyclerView.Adapter<SinhVienAdapter.ViewHolder>
+    //implement all method
+
+    //tạo context và arryList cho SinhVienAdapter
+
+    //    private Context context;
+    //    private ArrayList<SinhVienModel> list;
+    //
+    //    public SinhVienAdapter(Context context, ArrayList<SinhVienModel> list) {
+    //        this.context = context;
+    //        this.list = list;
+    //    }
+
+    //b14trong phần ViewHolder onCreateViewHolder
+
+    //        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+    //        View view = inflater.inflate(R.layout.item_sinh_vien, parent, false);
+    //
+    //        return new ViewHolder(view);
+
+    //b15 ánh xạ trong phần ViewHolder
+
+    //   public class ViewHolder extends RecyclerView.ViewHolder {
+    //
+    //        TextView tvMaSV, tvTenSV, tvDiemSV;
+    //        ImageView btDelete, btEdit;
+    //
+    //        public ViewHolder(@NonNull View itemView) {
+    //            super(itemView);
+    //
+    //            tvMaSV = itemView.findViewById(R.id.tv_ma_sv);
+    //            tvTenSV = itemView.findViewById(R.id.tv_ten_sv);
+    //            tvDiemSV = itemView.findViewById(R.id.tv_diem_sv);
+    //
+    //            btDelete = itemView.findViewById(R.id.bt_delete);
+    //            btEdit = itemView.findViewById(R.id.bt_edit);
+    //        }
+    //    }
+
+    //b16 trong phần getItemCount
+   //@Override
+    //    public int getItemCount() {
+    //        return list.size();
+    //    }
+
+    //b17 trong phần onBindViewHolder
+    //@Override
+    //    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    //
+    //        holder.tvMaSV.setText(list.get(position).getMasv());
+    //        holder.tvTenSV.setText(list.get(position).getTensv());
+    //        holder.tvDiemSV.setText(String.valueOf(list.get(position).getDiem()));
+    //    }
+
+    //b18 thêm SinhVienDAO vào DanhSachFragment
+
+    //private SinhVienDAO sinhVienDAO;
+
+    //b19   lấy danh sách
+
+//    sinhVienDAO = new SinhVienDAO(getContext());
+//    ArrayList<SinhVienModel> list = sinhVienDAO.getDs();
+
+
+// b20    hiện thị
+
+//    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//    recyclerView.setLayoutManager(linearLayoutManager);
+//    SinhVienAdapter sinhVienAdapter = new SinhVienAdapter(getContext(), list);
+//    recyclerView.setAdapter(sinhVienAdapter);
 
 
 }
