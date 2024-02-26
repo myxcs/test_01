@@ -640,6 +640,78 @@ public class comment {
     //SinhVienAdapter sinhVienAdapter = new SinhVienAdapter(getContext(), list, sinhVienDAO);
 
 
+    //b28 xóa Sinh viên
+    //trong phầm SinhVienDAO hàm deleteSV()
+
+    //    public boolean deleteSV(String masv){
+    //        SQLiteDatabase sqliteDatabase = dbHelper.getWritableDatabase();
+    //        int check = sqliteDatabase.delete("SINHVIEN", "MASV=?", new String[]{masv});
+    //        if(check == 0){
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+
+    //b29 trong phần SinhVienAdapter thực hiện sự kiện nút delete để xóa
+    //
+    //holder.btDelete.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View view) {
+
+    //                //tạo hàm showDialogDelete để hiện thị và thực hiện  xóa Sv
+    //                                showDialogDelete(list.get(holder.getAdapterPosition()).getTensv(), list.get(holder.getAdapterPosition()).getMasv());
+    //            }
+    //        });
+
+    //b30 tạo hàm showDialogDelete và hàm loadDanhSach()
+
+    //    private void showDialogDelete(String tenSV, String maSV) {
+    //
+    //        //build dialog
+    //        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    //        builder.setTitle("Thông báo");
+    //        builder.setMessage("Xóa sinh viên "+tenSV+" ?");
+    //    //add vector icon
+     //       builder.setIcon(R.drawable.ic_caution);
+    //        builder.setCancelable(false);
+    //
+    //        //setPositiveButton và setNegativeButton
+    //
+    //        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+    //            @Override
+    //            public void onClick(DialogInterface dialogInterface, int i) {
+    //                boolean check = sinhVienDAO.deleteSV(maSV);
+    //                if (check) {
+    //                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+    //                    //load lại danh sách
+    //                    loadDanhSach();
+    //
+    //                } else {
+    //                    Toast.makeText(context, "Xóa không thành công", Toast.LENGTH_SHORT).show();
+    //                }
+    //            }
+    //        });
+    //        builder.setNegativeButton("Hủy", null);
+    //        AlertDialog alertDialog = builder.create();
+    //        alertDialog.show();
+    //
+    //
+    //    }
+
+    //hàm loadDanhSach
+
+    // private void loadDanhSach() {
+    //            list.clear();
+    //            list = sinhVienDAO.getDs();
+    //            notifyDataSetChanged();
+    //        }
+
+    //cautious !!!
+    //app bị lỗi phần chỉnh sửa do nó sử dụng id để sửa, nhớ fix ở nhưng phiên bản sau
+
+
+
+
 
 
 

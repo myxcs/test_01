@@ -3,6 +3,7 @@ package com.example.test_01.adapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,14 @@ public class SinhVienAdapter extends RecyclerView.Adapter<SinhVienAdapter.ViewHo
             public void onClick(View view) {
                 showDialogUpdate(list.get(holder.getAdapterPosition()));
 
+            }
+        });
+
+        //xóa Sinh viên
+        holder.btDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialogDelete(list.get(holder.getAdapterPosition()).getTensv(), list.get(holder.getAdapterPosition()).getMasv());
             }
         });
 
@@ -160,4 +169,41 @@ public class SinhVienAdapter extends RecyclerView.Adapter<SinhVienAdapter.ViewHo
             }
         });
     }
+    private void showDialogDelete(String tenSV, String maSV) {
+
+        //build dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Thông báo");
+        builder.setMessage("Xóa sinh viên "+tenSV+" ?");
+        builder.setIcon(R.drawable.ic_caution);
+        builder.setCancelable(false);
+
+        //setPositiveButton và setNegativeButton
+
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                boolean check = sinhVienDAO.deleteSV(maSV);
+                if (check) {
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    //load lại danh sách
+                    loadDanhSach();
+
+                } else {
+                    Toast.makeText(context, "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Hủy", null);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+
+    }
+    private void loadDanhSach() {
+            list.clear();
+            list = sinhVienDAO.getDs();
+            notifyDataSetChanged();
+        }
 }
+

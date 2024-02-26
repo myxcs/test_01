@@ -64,4 +64,12 @@ public class SinhVienDAO {
         }
         return true;
     }
+    public boolean deleteSV(String masv){
+        SQLiteDatabase sqliteDatabase = dbHelper.getWritableDatabase();
+        int check = sqliteDatabase.delete("SINHVIEN", "MASV=?", new String[]{masv});
+        if(check == 0){
+            return false;
+        }
+        return true;
+    }
 }
