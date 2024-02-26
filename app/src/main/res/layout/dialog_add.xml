@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm Sinh Viên"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/ed_ma_sv"
+            android:layout_marginHorizontal="20dp"
+            android:hint="Mã sinh viên"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/ed_ten_sv"
+            android:layout_marginHorizontal="20dp"
+            android:hint="Tên sinh viên"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:id="@+id/ed_diem_sv"
+            android:layout_marginHorizontal="20dp"
+            android:hint="Điểm"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <LinearLayout
+            android:layout_marginVertical="20dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+
+            <Button
+                android:backgroundTint="#4CAF50"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/bt_them"
+                android:layout_marginHorizontal="50dp"
+                android:text="Thêm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:backgroundTint="#FF9800"
+                android:layout_marginHorizontal="50dp"
+                android:id="@+id/bt_huy"
+                android:text="Hủy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

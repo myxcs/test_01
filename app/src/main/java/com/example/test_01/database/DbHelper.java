@@ -18,7 +18,7 @@ public class DbHelper extends SQLiteOpenHelper {
      String createSinhVien = "CREATE TABLE SINHVIEN (" +
              "MASV TEXT PRIMARY KEY," +
              "TENSV TEXT," +
-             "DIEM INTEGER)";
+             "DIEM FLOAT)";
      sqLiteDatabase.execSQL(createSinhVien);
         //tạo data mẫu
         String addSinhVien = "INSERT INTO SINHVIEN VALUES" +
@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 " ('PH36462', 'Trần Văn A', 8), " +
                 "('PH36463', 'Trần Văn B', 7)," +
                 " ('PH36466', 'Trần Văn C', 9)," +
-                " ('PH36434', 'Trần Văn D', 8)";
+                " ('PH36434', 'Trần Văn D', 8.5)";
         sqLiteDatabase.execSQL(addSinhVien);
 
     }

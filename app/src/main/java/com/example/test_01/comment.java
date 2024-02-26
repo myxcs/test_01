@@ -358,15 +358,291 @@ public class comment {
     //b19   lấy danh sách
 
 //    sinhVienDAO = new SinhVienDAO(getContext());
-//    ArrayList<SinhVienModel> list = sinhVienDAO.getDs();
+
+    //b20    tạo hàm lấy dữ liệu và load loại data trong DanhSachFragment
+
+//    private void loadData() {
+//        //lấy dữ liệu tu database
+//        ArrayList<SinhVienModel> list = sinhVienDAO.getDs();
+//
+//        //hiện thị
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        recyclerView.setLayoutManager(linearLayoutManager);
+//        SinhVienAdapter sinhVienAdapter = new SinhVienAdapter(getContext(), list);
+//        recyclerView.setAdapter(sinhVienAdapter);
+//    }
+
+//b21 tạo dialog thêm sử dụng cardView
 
 
-// b20    hiện thị
+    //<?xml version="1.0" encoding="utf-8"?>
+    //<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    //    xmlns:app="http://schemas.android.com/apk/res-auto"
+    //    app:cardCornerRadius="10dp"
+    //    android:layout_width="match_parent"
+    //    android:layout_height="wrap_content">
+    //
+    //    <LinearLayout
+    //        android:orientation="vertical"
+    //        android:layout_width="match_parent"
+    //        android:layout_height="match_parent">
+    //        <TextView
+    //            android:layout_width="match_parent"
+    //            android:layout_height="wrap_content"
+    //            android:text="Thêm Sinh Viên"
+    //            android:gravity="center"
+    //            android:textSize="30dp"
+    //            android:textStyle="bold"/>
+    //
+    //        <EditText
+    //            android:layout_marginTop="20dp"
+    //            android:id="@+id/ed_ma_sv"
+    //            android:layout_marginHorizontal="20dp"
+    //            android:hint="Mã sinh viên"
+    //            android:layout_width="match_parent"
+    //            android:layout_height="wrap_content" />
+    //
+    //        <EditText
+    //            android:id="@+id/ed_ten_sv"
+    //            android:layout_marginHorizontal="20dp"
+    //            android:hint="Tên sinh viên"
+    //            android:layout_width="match_parent"
+    //            android:layout_height="wrap_content"
+    //            />
+    //        <EditText
+    //            android:id="@+id/ed_diem_sv"
+    //            android:layout_marginHorizontal="20dp"
+    //            android:hint="Điểm"
+    //            android:layout_width="match_parent"
+    //            android:layout_height="wrap_content"
+    //            />
+    //
+    //        <LinearLayout
+    //            android:layout_marginVertical="20dp"
+    //            android:layout_marginHorizontal="10dp"
+    //            android:layout_marginTop="30dp"
+    //            android:layout_gravity="center"
+    //            android:layout_width="match_parent"
+    //            android:layout_height="wrap_content"
+    //            android:weightSum="2"
+    //            android:orientation="horizontal">
+    //
+    //            <Button
+    //                android:backgroundTint="#4CAF50"
+    //                android:layout_gravity="center"
+    //                android:layout_weight="1"
+    //                android:id="@+id/bt_them"
+    //                android:layout_marginHorizontal="50dp"
+    //                android:text="Thêm"
+    //                android:layout_width="wrap_content"
+    //                android:layout_height="wrap_content"/>
+    //            <Button
+    //                android:layout_weight="1"
+    //                android:layout_gravity="center"
+    //                android:backgroundTint="#FF9800"
+    //                android:layout_marginHorizontal="50dp"
+    //                android:id="@+id/bt_huy"
+    //                android:text="Hủy"
+    //                android:layout_width="wrap_content"
+    //                android:layout_height="wrap_content"/>
+    //
+    //        </LinearLayout>
+    //
+    //
+    //
+    //    </LinearLayout>
+    //
+    //</androidx.cardview.widget.CardView>
 
-//    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-//    recyclerView.setLayoutManager(linearLayoutManager);
-//    SinhVienAdapter sinhVienAdapter = new SinhVienAdapter(getContext(), list);
-//    recyclerView.setAdapter(sinhVienAdapter);
+
+    //b22 tạo hàm hiện thị dialog, ánh xạ và xử lí trong DanhSachFragment vào gọi hàm này trong floatAdd
+  //    private void showDialogAdd() {
+    //        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+    //        LayoutInflater inflater = getLayoutInflater();
+    //        View view = inflater.inflate(R.layout.dialog_add, null);
+    //        builder.setView(view);
+    //
+    //        AlertDialog alertDialog = builder.create();
+            // ngăn người dùng nhấn ra ngoài
+    //        alertDialog.setCancelable(false);
+    //        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    //        alertDialog.show();
+    //
+    //        //ánh xạ và xử lí
+    //        EditText edMaSV = view.findViewById(R.id.ed_ma_sv);
+    //        EditText edTenSV = view.findViewById(R.id.ed_ten_sv);
+    //        EditText edDiemSV = view.findViewById(R.id.ed_diem_sv);
+    //        Button btThem = view.findViewById(R.id.bt_them);
+    //        Button btHuy = view.findViewById(R.id.bt_huy);
+    //
+    //        //xử lý btThem
+    //        btThem.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                String maSV = edMaSV.getText().toString();
+    //                String tenSV = edTenSV.getText().toString();
+    //                String diemSV = edDiemSV.getText().toString();
+    //
+    //                if (tenSV.isEmpty() || diemSV.isEmpty() || maSV.isEmpty()) {
+    //                    Toast.makeText(getContext(), "Vui lòng nhập đủ dữ liệu", Toast.LENGTH_SHORT).show();
+    //                }
+    //                if (Float.parseFloat(diemSV) < 0 || Float.parseFloat(diemSV) > 10) {
+    //                    Toast.makeText(getContext(), "Điểm của sinh viên phải nằm trong khoảng từ 1 - 10", Toast.LENGTH_SHORT).show();
+    //                }
+    //                else {
+    //                    SinhVienModel sinhVienModel = new SinhVienModel(maSV, tenSV, Float.parseFloat(diemSV));
+    //                    boolean check = sinhVienDAO.addSV(sinhVienModel);
+    //                    if (check) {
+    //                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+
+                          //dùng hàm loadData() trong DanhSachFragment để load lai dữ liệu
+    //                        loadData();
+    //                        alertDialog.dismiss();
+    //                    }
+    //                    else {
+    //                        Toast.makeText(getContext(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+    //                    }
+    //                }
+    //            }
+    //        });
+    //
+    //        //xử lý btHuy
+    //        btHuy.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                alertDialog.dismiss();
+    //            }
+    //        });
+    //    }
+
+    //b23 thực hiện chỉnh sửa
+    // tạo một dialog chỉnh sửa dựa theo dialog thêm
+    //
+    //b24 trong phần SinhVienDAO tạo thêm một hàm để sửa thông tin Sinh viên
+
+    //public boolean updateSV(SinhVienModel sinhVienModel){
+    //        SQLiteDatabase sqliteDatabase = dbHelper.getWritableDatabase();
+    //        ContentValues values = new ContentValues();
+    //        values.put("MASV", sinhVienModel.getMasv());
+    //        values.put("TENSV", sinhVienModel.getTensv());
+    //        values.put("DIEM", sinhVienModel.getDiem());
+    //
+    //        int check = sqliteDatabase.update("SINHVIEN", values, "MASV=?", new String[]{sinhVienModel.getMasv()});
+    //        if(check == 0){
+    //            return false;
+    //        }
+    //        return true;
+    //    }
+
+    //b25 hiện thị dialog sửa
+    //trong phần SinhVienAdapter ở phần onBindViewHolder gọi tới nút sửa
+    //
+    // holder.btEdit.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View view) {
+    //                showDialogUpdate(list.get(holder.getAdapterPosition()));
+
+    //                  //hàm này phải sử dụng list.get(holder.getAdapterPosition()) để lấy vị trí
+    //            }
+    //        });
+
+
+    //b26 tạo hàm showDialogUpdate để thực hiện hiện thị và chỉnh sửa
+    //
+    //    private void showDialogUpdate(SinhVienModel sinhVienModel) {
+    //
+    //        //build dialog
+    //        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    //        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+    //        View view = inflater.inflate(R.layout.dialog_update, null);
+    //        builder.setView(view);
+    //
+    //        //hien thi dialog
+    //        AlertDialog alertDialog = builder.create();
+    //        alertDialog.setCancelable(false);
+    //        alertDialog.show();
+    //        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+    //
+    //        //ánh xạ
+    //        EditText edtMaSV = view.findViewById(R.id.ed_ma_sv);
+    //        EditText edtTenSV = view.findViewById(R.id.ed_ten_sv);
+    //        EditText edtDiemSV = view.findViewById(R.id.ed_diem_sv);
+    //
+    //        Button btnUpdate = view.findViewById(R.id.btn_update);
+    //        Button btnCancel = view.findViewById(R.id.btn_cancel);
+    //
+    //        //đưa dữ liệu vào sv cần sửa
+    //        edtMaSV.setText(sinhVienModel.getMasv());
+    //        edtTenSV.setText(sinhVienModel.getTensv());
+    //        edtDiemSV.setText(String.valueOf(sinhVienModel.getDiem()));
+    //
+    //        //xử lý sửa
+    //        btnUpdate.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View view) {
+    //                String maSV = edtMaSV.getText().toString();
+    //                String tenSV = edtTenSV.getText().toString();
+    //                String diemSV = edtDiemSV.getText().toString();
+    //
+    //                if (tenSV.isEmpty() || diemSV.isEmpty() || maSV.isEmpty()) {
+    //                    Toast.makeText(context, "Vui lòng nhập đủ dữ liệu", Toast.LENGTH_SHORT).show();
+    //                }
+    //                if (Float.parseFloat(diemSV) < 0 || Float.parseFloat(diemSV) > 10) {
+    //                    Toast.makeText(context, "Điểm của sinh viên phải nằm trong khoảng từ 1 - 10", Toast.LENGTH_SHORT).show();
+    //                }
+    //                else {
+    //                    SinhVienModel updateSinhVienModel = new SinhVienModel(maSV, tenSV, Float.parseFloat(diemSV));
+    //                    boolean check = sinhVienDAO.updateSV(updateSinhVienModel);
+    //
+    //                    if (check) {
+    //                        Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+    //
+    //                        //load lại danh sách sản phẩm sau khi sửa
+    //                        list.clear();
+    //                        list = sinhVienDAO.getDs();
+    //                        notifyDataSetChanged();
+    //
+    //                        alertDialog.dismiss();
+    //                    }
+    //                    else {
+    //                        Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+    //                        alertDialog.dismiss();
+    //                    }
+    //
+    //                }
+    //            }
+    //        });
+    //
+    //        //xử lý hủy
+    //        btnCancel.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View view) {
+    //                alertDialog.dismiss();
+    //            }
+    //        });
+    //    }
+
+    //b27 lưu ý, vì phần sửa cần phần SinhVienDAO
+
+    //nên ta thêm phầm này vào trong phần SinhVienAdapter
+    // private SinhVienDAO sinhVienDAO;
+
+    //ta thực hiện khởi to lại constructor trong phần SinhVienAdapter
+    //
+    //  public SinhVienAdapter(Context context, ArrayList<SinhVienModel> list, SinhVienDAO sinhVienDAO) {
+    //        this.context = context;
+    //        this.list = list;
+    //        this.sinhVienDAO = sinhVienDAO;
+    //    }
+
+    //trong hàm loadData() ở DanhSachFragment ta thay đổi
+
+    //SinhVienAdapter sinhVienAdapter = new SinhVienAdapter(getContext(), list, sinhVienDAO);
+
+
+
+
+
 
 
 }

@@ -3,9 +3,9 @@ package com.example.test_01.model;
 public class SinhVienModel {
     private String masv;
     private String tensv;
-    private int diem;
+    private float diem;
 
-    public SinhVienModel(String masv, String tensv, int diem) {
+    public SinhVienModel(String masv, String tensv, float diem) {
         this.masv = masv;
         this.tensv = tensv;
         this.diem = diem;
@@ -27,11 +27,11 @@ public class SinhVienModel {
         this.tensv = tensv;
     }
 
-    public int getDiem() {
+    public float getDiem() {
         return diem;
     }
 
-    public void setDiem(int diem) {
+    public void setDiem(float diem) {
         this.diem = diem;
     }
 }
